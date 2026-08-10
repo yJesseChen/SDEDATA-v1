@@ -2,7 +2,7 @@
 
 This repository contains data generation scripts for the numerical examples used in several stochastic flow map learning papers. The scripts generate training, testing, conditional, and original trajectory data for SDE, multiscale SDE, SPDE, and SSA examples.
 
-Most Python scripts save `.mat` files to the parent directory of this repository using names derived from the script name, for example `Ex3OU_train.mat` and `Ex3OU_test.mat`. The MATLAB SSA scripts currently contain several commented generation blocks; choose the block you need and adjust the output path before running.
+Most Python scripts save `.mat` files to the parent directory of this repository using names derived from the script name, for example `Ex3OU_train.mat` and `Ex3OU_test.mat`. The Matlab SSA scripts currently contain several commented generation blocks; choose the block you need and adjust the output path before running.
 
 ## References
 
@@ -21,11 +21,33 @@ The scripts cover examples from the following papers:
 - [6] Yuan Chen, Weize Mao, and Dongbin Xiu, `Data-Driven Effective Modeling of Stochastic Chemical Reaction Networks`, to be published soon.
 - [7] Yuan Chen, Markos A. Katsoulakis, and Dongbin Xiu, `Chemistry-Informed Generative Modeling for Complex Stochastic Reaction Networks`, to be published soon.
 
-## Repository Contents
+## Requirements
 
-### Core SDE examples
+Python scripts require:
 
-These examples are shared by the GAN, autoencoder, and conditional diffusion sFML papers.
+- Python 3
+- `numpy`
+- `scipy`
+
+Matlab scripts require Matlab and the SSA helper functions used by the scripts, including functions such as `examples`, `GenDatawithGillespieSSA`, and `SSA_path_rs`, available on the Matlab path. The dependencies required by `Ex42Vilar2002R.m` and `Ex41SSACIRC73s.m` are not included because they rely on code written by other authors. Please contact `chen.11050@osu.edu` or `yuan_chen1@brown.edu` if you need those files.
+
+## Repository Structure
+
+The repository is organized as follows:
+
+| Path | Contents |
+| --- | --- |
+| `*.py` | Python data-generation scripts for SDE, multiscale SDE, SPDE, and Python-based SSA examples. |
+| `SSA/` | Matlab SSA data-generation scripts. These scripts may require external Matlab helper code that is not included in this repository. |
+| `README.md` | Overview of references, scripts, running instructions, and output data format. |
+
+Generated `.mat` data files are not tracked in this repository by default. Most Python scripts write output files to the parent directory of the repository; adjust the save path in each script if you want a different destination.
+
+## Scripts
+
+### Python
+
+Core SDE examples shared by the GAN, autoencoder, and conditional diffusion sFML papers:
 
 | Script | Example | Paper |
 | --- | --- | --- |
@@ -39,9 +61,7 @@ These examples are shared by the GAN, autoencoder, and conditional diffusion sFM
 | `Ex7MdOU.py` | Multi-dimensional OU process; can be used for 2D or 5D OU | [1], [2], [3] |
 | `Ex10SO.py` | Stochastic oscillator | [1], [3] |
 
-### Nonautonomous and controlled examples
-
-These examples correspond to the 2026 nonautonomous/control paper.
+Nonautonomous and controlled examples from the 2026 nonautonomous/control paper:
 
 | Script | Example | Paper |
 | --- | --- | --- |
@@ -53,9 +73,7 @@ These examples correspond to the 2026 nonautonomous/control paper.
 | `Ex43SSAmRNAwDynk.py` | Gene expression SSA model with time-dependent reaction rate | [4] |
 | `SPDEEx3SHeatEquModal_wSource_Spectral.py` | Stochastic heat equation with source, in spectral/modal form | [4] |
 
-### Multiscale examples
-
-These examples correspond to the multiscale stochastic flow map learning paper.
+Multiscale examples from the multiscale stochastic flow map learning paper:
 
 | Script | Example | Paper |
 | --- | --- | --- |
@@ -65,9 +83,7 @@ These examples correspond to the multiscale stochastic flow map learning paper.
 | `Ex34MultiScaleDuan3D.py` | 3D nonlinear SDE | [5] |
 | `Ex36MultiscaleNonlinOclator.py` | Multiscale stochastic oscillator | [5] |
 
-### SSA examples
-
-These examples correspond to the two SSA papers that will be published soon.
+SSA examples implemented in Python:
 
 | Script | Example | Paper |
 | --- | --- | --- |
@@ -77,14 +93,8 @@ These examples correspond to the two SSA papers that will be published soon.
 | `Ex27SSAautocatalytic.py` | Autocatalysis | [6] |
 | `Ex26SSAOregonator.py` | Oregonator | [6] |
 | `Ex45SSASchlogl.py` | Schlogl model | [7] |
-| `Ex42Vilar2002R.m` | Vilar 2002 genetic oscillator model | [7] |
-| `Ex41SSACIRC73s.m` | Mammalian circadian clock model | [7] |
 
-The two MATLAB files, `Ex42Vilar2002R.m` and `Ex41SSACIRC73s.m`, depend on code written by other authors. We do not have permission to share those dependencies in this repository. If you need to run these examples, please contact the author at `chen.11050@osu.edu` or `yuan_chen1@brown.edu`.
-
-### Additional SPDE scripts
-
-These SPDE generation scripts are retained in the repository:
+Additional SPDE scripts retained in the repository:
 
 | Script | Purpose | Paper |
 | --- | --- | --- |
@@ -93,19 +103,7 @@ These SPDE generation scripts are retained in the repository:
 | `SPDEEx1SHeatEquModal_Spectral.py` | Spectral/modal stochastic heat equation | Additional SPDE script |
 | `SPDEEx2SAdvDiffModal_Spectral.py` | Spectral/modal stochastic advection-diffusion example | Additional SPDE script |
 
-## Requirements
-
-Python scripts require:
-
-- Python 3
-- `numpy`
-- `scipy`
-
-MATLAB scripts require MATLAB and the SSA helper functions used by the scripts, including functions such as `examples`, `GenDatawithGillespieSSA`, and `SSA_path_rs`, available on the MATLAB path. The dependencies required by `Ex42Vilar2002R.m` and `Ex41SSACIRC73s.m` are not included because they rely on code written by other authors. Please contact `chen.11050@osu.edu` or `yuan_chen1@brown.edu` if you need those files.
-
-## Running Python Scripts
-
-Run a script directly from this folder:
+Run a Python script directly from this folder:
 
 ```bash
 python Ex3OU.py
@@ -140,23 +138,32 @@ python Ex17PredPrey.py
 
 SSA Python scripts may additionally contain commented blocks for conditional distributions, original SSA paths, or stopping-time data. Uncomment the block you need before running.
 
-## Running MATLAB Scripts
+### Matlab
 
-The MATLAB files currently contain several generation blocks, most of which are commented. Select the block you need, update the save path if necessary, and run:
+SSA examples implemented in Matlab:
+
+| Script | Example | Paper |
+| --- | --- | --- |
+| `SSA/Ex42Vilar2002R.m` | Vilar 2002 genetic oscillator model | [7] |
+| `SSA/Ex41SSACIRC73s.m` | Mammalian circadian clock model | [7] |
+
+The two Matlab files, `Ex42Vilar2002R.m` and `Ex41SSACIRC73s.m`, depend on code written by other authors. We do not have permission to share those dependencies in this repository. If you need to run these examples, please contact the author at `chen.11050@osu.edu` or `yuan_chen1@brown.edu`.
+
+The Matlab files currently contain several generation blocks, most of which are commented. Select the block you need, update the save path if necessary, and run:
 
 ```bash
-matlab -batch "run('Ex42Vilar2002R.m')"
+matlab -batch "run('SSA/Ex42Vilar2002R.m')"
 ```
 
 or
 
 ```bash
-matlab -batch "run('Ex41SSACIRC73s.m')"
+matlab -batch "run('SSA/Ex41SSACIRC73s.m')"
 ```
 
-The current MATLAB files use hard-coded output paths under `/Users/jesse/Dropbox/DataProd/`. Change these paths before running on another machine. The MATLAB dependencies for `Ex42Vilar2002R.m` and `Ex41SSACIRC73s.m` are not included in this repository; contact `chen.11050@osu.edu` or `yuan_chen1@brown.edu` if needed.
+The current Matlab files use hard-coded output paths under `/Users/jesse/Dropbox/DataProd/`. Change these paths before running on another machine.
 
-## Data Format
+## Output Data Format
 
 Most generated `.mat` files contain a variable named `data`.
 
