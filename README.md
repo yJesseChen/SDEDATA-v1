@@ -19,7 +19,6 @@ The scripts cover examples from the following papers:
 - [5] Yuan Chen and Dongbin Xiu, `Data-Driven Effective Modeling of Multiscale Stochastic Dynamical Systems`, 2024.
   https://iamyuanchen.xyz/pdf/2024ChenXiu_b.pdf
 - [6] Yuan Chen, Weize Mao, and Dongbin Xiu, `Data-Driven Effective Modeling of Stochastic Chemical Reaction Networks`, to be published soon.
-- [7] Yuan Chen, Markos A. Katsoulakis, and Dongbin Xiu, `Chemistry-Informed Generative Modeling for Complex Stochastic Reaction Networks`, to be published soon.
 
 ## Requirements
 
@@ -88,11 +87,11 @@ SSA examples implemented in Python:
 | Script | Example | Paper |
 | --- | --- | --- |
 | `Ex22SSATransfer.py` | Transfer process | [6] |
-| `Ex23SSALV.py` | SSA Lotka-Volterra model | [6], [7] |
+| `Ex23SSALV.py` | SSA Lotka-Volterra model | [6] |
 | `Ex25SSABrusselator.py` | Brusselator | [6] |
 | `Ex27SSAautocatalytic.py` | Autocatalysis | [6] |
 | `Ex26SSAOregonator.py` | Oregonator | [6] |
-| `Ex45SSASchlogl.py` | Schlogl model | [7] |
+| `Ex45SSASchlogl.py` | Schlogl model | [6] |
 
 Additional SPDE scripts retained in the repository:
 
@@ -144,8 +143,8 @@ SSA examples implemented in Matlab:
 
 | Script | Example | Paper |
 | --- | --- | --- |
-| `SSA/Ex42Vilar2002R.m` | Vilar 2002 genetic oscillator model | [7] |
-| `SSA/Ex41SSACIRC73s.m` | Mammalian circadian clock model | [7] |
+| `SSA/Ex42Vilar2002R.m` | Vilar 2002 genetic oscillator model | [6] |
+| `SSA/Ex41SSACIRC73s.m` | Mammalian circadian clock model | [6] |
 
 The two Matlab files, `Ex42Vilar2002R.m` and `Ex41SSACIRC73s.m`, depend on code written by other authors. We do not have permission to share those dependencies in this repository. If you need to run these examples, please contact the author at `chen.11050@osu.edu` or `yuan_chen1@brown.edu`.
 
