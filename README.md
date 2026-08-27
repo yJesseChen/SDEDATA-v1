@@ -20,7 +20,6 @@ The scripts cover examples from the following papers:
   https://iamyuanchen.xyz/pdf/2024ChenXiu_b.pdf
 - [6] Yuan Chen, Weize Mao, and Dongbin Xiu, `Data-driven Effective Modeling of Stochastic Chemical Reaction Networks`, 2026.
   https://iamyuanchen.xyz/pdf/2026ChenMaoXiu.pdf
-  https://arxiv.org/abs/2608.25421
 
 ## Requirements
 
